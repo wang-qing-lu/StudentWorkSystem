@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.firstproject.springbootdemo.dao.familyinfoMapper">
+    <resultMap id="BaseResultMap" type="com.firstproject.springbootdemo.domain.Familyinfo" >
+        <id column="student_name" property="student_name" jdbcType="VARCHAR" />
+        <result column="parentname" property="parentname" jdbcType="VARCHAR" />
+        <result column="family_address" property="family_address" jdbcType="VARCHAR" />
+        <result column="flocation_id" property="flocation_id" jdbcType="INTEGER" />
+        <result column="poor_grade" property="poor_grade" jdbcType="VARCHAR" />
+        <result column="zip_code" property="zip_code" jdbcType="INTEGER" />
+        <result column="parent_phone_number" property="parent_phone_number" jdbcType="BIGINT" />
+        <result column="relationship" property="relationship" jdbcType="VARCHAR" />
+        <result column="residence_address" property="residence_address" jdbcType="VARCHAR" />
+    </resultMap>
+    <select id="selectAllFamilyinfo" resultMap="BaseResultMap">
+        select * from familyinfo;
+    </select>
+    <select id="selectFamilyinfoByStudentname" resultMap="BaseResultMap">
+        select * from familyinfo WHERE student_name=#{student_name};
+    </select>
+    <update id="updateFamilyinfo" >
+        UPDATE familyinfo SET  parent_phone_number = #{parent_phone_number},family_address = #{family_address} WHERE student_name = #{student_name}
+    </update>
+    <delete id="delectFamilyinfo" >
+         DELETE FROM familyinfo WHERE student_name=#{student_name};
+    </delete>
+    <insert id="insertFamilyinfo" >
+        INSERT INTO familyinfo (student_name,parentname,family_address,flocation_id,poor_grade,zip_code,parent_phone_number,relationship,residence_address)
+        VALUES (#{student_name},#{parentname},#{family_address},#{flocation_id},#{poor_grade},#{zip_code},#{parent_phone_number},#{relationship},#{residence_address})
+    </insert>
+</mapper>

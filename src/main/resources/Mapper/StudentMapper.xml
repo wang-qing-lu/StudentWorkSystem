@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.firstproject.springbootdemo.dao.StudentMapper">
+    <resultMap id="BaseResultMap" type="com.firstproject.springbootdemo.domain.Student" >
+        <result column="username" property="username" jdbcType="VARCHAR" />
+        <result column="password" property="password" jdbcType="VARCHAR" />
+        <result column="student_name" property="name" jdbcType="VARCHAR" />
+        <result column="school_id" property="schoolId" jdbcType="INTEGER" />
+        <association property="studentscinfo" column="school_id" javaType="com.firstproject.springbootdemo.domain.Studentscinfo">
+            <id column="school_id" property="school_id" jdbcType="INTEGER" />
+            <result column="campus" property="campus" jdbcType="VARCHAR" />
+            <result column="branch_province_id" property="branch_province_id" jdbcType="INTEGER" />
+            <result column="branch_id" property="branch_id" jdbcType="INTEGER" />
+            <result column="college_department_id" property="college_department_id" jdbcType="INTEGER" />
+            <result column="branch_name" property="branch_name" jdbcType="VARCHAR" />
+            <result column="college_name" property="college_name" jdbcType="VARCHAR" />
+            <result column="college_province_id" property="college_province_id" jdbcType="INTEGER" />
+        </association>
+    </resultMap>
+    <select id="selectall" resultMap="BaseResultMap">
+        select * from student;
+    </select>
+    <select id="getUserByUsername" resultMap="BaseResultMap">
+        select * from student WHERE username=#{username};
+    </select>
+    <select id="getScinfoByStudentname" resultMap="BaseResultMap">
+        select
+        d.username,d.password,d.school_id,u.campus,u.branch_province_id,
+        u.branch_id,u.college_department_id,u.branch_name,u.college_name,
+        u.college_province_id from Student d left join Studentscinfo u
+        on d.school_id = u.school_id where student_name=#{student_name};
+    </select>
+    <select id="getUserByStudentname" resultMap="BaseResultMap">
+        select * from student WHERE student_name=#{student_name};
+    </select>
+    <delete id="delete" >
+         DELETE FROM student WHERE username=#{username};
+    </delete>
+    <update id="update" >
+        UPDATE student SET  password = #{password},student_name=#{name} WHERE username = #{username}
+    </update>
+    <insert id="insert" >
+        INSERT INTO student (username,password,student_name) VALUES (#{username},#{password},#{name})
+    </insert>
+</mapper>

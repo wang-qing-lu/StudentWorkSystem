@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.firstproject.springbootdemo.dao.studentEminformationMapper">
+    <resultMap id="BaseResultMap" type="com.firstproject.springbootdemo.domain.Studenteminformation" >
+        <id column="student_name" property="student_name" jdbcType="VARCHAR" />
+        <result column="company_address" property="company_address" jdbcType="VARCHAR" />
+        <result column="company_name" property="company_name" jdbcType="VARCHAR" />
+        <result column="company_nature" property="company_nature" jdbcType="VARCHAR" />
+        <result column="company_organization" property="company_organization" jdbcType="VARCHAR" />
+        <result column="company_industry" property="company_industry" jdbcType="VARCHAR" />
+        <result column="company_phone_number" property="company_phone_number" jdbcType="BIGINT" />
+        <result column="company_affiliated_department" property="company_affiliated_department" jdbcType="VARCHAR" />
+        <result column="company_postcode" property="company_postcode" jdbcType="INTEGER" />
+        <result column="file_company_address" property="file_company_address" jdbcType="VARCHAR" />
+        <result column="company_area" property="company_area" jdbcType="VARCHAR" />
+        <result column="company_person" property="company_person" jdbcType="VARCHAR" />
+        <result column="dispatch_time" property="dispatch_time" jdbcType="VARCHAR" />
+        <result column="registration_card_category" property="registration_card_category" jdbcType="VARCHAR" />
+        <result column="registration_card_company" property="registration_card_company" jdbcType="VARCHAR" />
+        <result column="registration_card_number" property="registration_card_number" jdbcType="BIGINT" />
+        <result column="file_company_postcode" property="file_company_postcode" jdbcType="INTEGER" />
+        <result column="enter_time" property="enter_time" jdbcType="VARCHAR" />
+        <result column="special_Instructions" property="special_Instructions" jdbcType="VARCHAR" />
+        <result column="employment_satisfaction" property="employment_satisfaction" jdbcType="VARCHAR" />
+        <result column="employment_flag" property="employment_flag" jdbcType="VARCHAR" />
+    </resultMap>
+    <select id="selcetAllStudenteminformation" resultMap="BaseResultMap">
+        select * from studenteminformation;
+    </select>
+    <select id="selectStudenteminformationByStudentname" resultMap="BaseResultMap">
+        select * from studenteminformation WHERE student_name=#{student_name};
+    </select>
+    <delete id="delectStudenteminformation" >
+         DELETE FROM studenteminformation WHERE student_name=#{student_name};
+    </delete>
+    <update id="updateStudenteminformation" >
+        UPDATE studenteminformation SET company_name=#{company_name},company_nature=#{company_nature},company_industry=#{company_industry},company_postcode=#{company_postcode},company_person=#{company_person},
+        company_organization=#{company_organization},company_affiliated_department=#{company_affiliated_department},company_area=#{company_area},company_address=#{company_address},company_phone_number=#{company_phone_number},dispatch_time=#{dispatch_time},
+        registration_card_category=#{registration_card_category},registration_card_company=#{registration_card_company},file_company_postcode=#{file_company_postcode},registration_card_number=#{registration_card_number},file_company_address=#{file_company_address},special_Instructions=#{special_Instructions},employment_satisfaction=#{employment_satisfaction},
+        employment_flag=#{employment_flag},enter_time=#{enter_time} WHERE student_name = #{student_name};
+    </update>
+    <insert id="insertStudenteminformation" >
+        INSERT INTO studenteminformation (student_name,company_name,company_nature,company_industry,company_postcode,company_person,company_organization,company_affiliated_department,company_area,company_address,company_phone_number,dispatch_time,registration_card_category,
+        registration_card_company,file_company_postcode,registration_card_number,file_company_address,enter_time,special_Instructions,employment_satisfaction,employment_flag)
+        VALUES (#{student_name},#{company_name},#{company_nature},#{company_industry},#{company_postcode},#{company_person},#{company_organization},#{company_affiliated_department},#{company_area},#{company_address},#{company_phone_number},#{dispatch_time},#{registration_card_category},
+        #{registration_card_company},#{file_company_postcode},#{registration_card_number},#{file_company_address},#{enter_time},#{special_Instructions},#{employment_satisfaction},#{employment_flag})
+    </insert>
+</mapper>

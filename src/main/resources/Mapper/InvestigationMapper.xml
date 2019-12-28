@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.firstproject.springbootdemo.dao.investigationMapper">
+    <resultMap id="BaseResultMap" type="com.firstproject.springbootdemo.domain.investigation" >
+        <id column="student_name" property="student_name" jdbcType="VARCHAR" />
+        <result column="expected_work_address" property="expected_work_address" jdbcType="VARCHAR" />
+        <result column="expected_wage" property="expected_wage" jdbcType="INTEGER" />
+        <result column="expected_company" property="expected_company" jdbcType="VARCHAR" />
+        <result column="expected_work_area" property="expected_work_area" jdbcType="VARCHAR" />
+        <result column="work_profession_related" property="work_profession_related" jdbcType="VARCHAR" />
+        <result column="remark" property="remark" jdbcType="VARCHAR" />
+        <result column="is_further_education" property="is_further_education" jdbcType="VARCHAR" />
+    </resultMap>
+    <select id="selectAllInvestigation" resultMap="BaseResultMap">
+        select * from investigation;
+    </select>
+    <select id="selectInvestigationByStudentname" resultMap="BaseResultMap">
+        select * from investigation WHERE student_name=#{student_name};
+    </select>
+    <delete id="delectInvestigation" >
+         DELETE FROM investigation WHERE student_name=#{student_name};
+    </delete>
+    <insert id="insertInvestigation" >
+        INSERT INTO investigation (student_name,expected_work_address,expected_wage,expected_company,expected_work_area,work_profession_related,remark,is_further_education)
+        VALUES (#{student_name},#{expected_work_address},#{expected_wage},#{expected_company},#{expected_work_area},#{work_profession_related},#{remark},#{is_further_education})
+    </insert>
+    <update id="updateInvestigation">
+        UPDATE investigation SET expected_work_address=#{expected_work_address},expected_wage=#{expected_wage},expected_company=#{expected_company},expected_work_area=#{expected_work_area}
+        work_profession_related=#{work_profession_related},is_further_education=#{is_further_education} WHERE student_name=#{student_name};
+    </update>
+</mapper>

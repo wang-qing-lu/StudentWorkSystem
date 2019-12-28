@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="stylesheet" href="css/common.css">
+    <link rel="stylesheet" href="css/student.css">
+    <script src="js/jquery-1.9.1.min.js"></script>
+
+</head>
+<body>
+<div class="container">
+    <div class="content">
+        <div class="header clearfix">
+            <div class="top fl">当前位置>个人信息</div>
+            <div class="bottom fr">
+                <a id="emit" href="javascript:;">更新</a>
+            </div>
+        </div>
+        <form  role="form"  id="updateStudentInfo" method="post" action="/updateStudentInfo" >
+            <div class="main">
+                <!--基础信息-->
+                <div class="BasicInformation">
+                    <div class="title">
+                        基础信息
+                    </div>
+                </div>
+                <div class="content clearfix">
+                    <div class="left fl">
+                        <div class="input-group">
+                            <label for="">姓名：</label>
+                            <input name="student_name" type="text" th:value="${studentInfo.student_name}"  disabled >
+                        </div>
+                        <div>
+                            <label for="">性别：</label>
+                           <input name="sex" type="text" th:value="${studentInfo.sex}" disabled>
+                        </div>
+                        <div>
+                            <label for="">出生日期：</label>
+                            <input name="birth_data" type="text" th:value="${studentInfo.birth_data}" disabled>
+                        </div>
+                        <div>
+                            <label for="">身份证号：</label>
+                            <input name="id_number" type="text"  th:value="${studentInfo.id_number}" disabled>
+                        </div>
+                    </div>
+                    <div class="right fr">
+                        <div>
+                            <label for="">学号：</label>
+                            <input  name="username" type="text" th:value="${studentInfo.username}" disabled>
+                        </div>
+                        <div>
+                            <label for="">民族：</label>
+                            <input name="nation" type="text" th:value="${studentInfo.nation}"  disabled>
+                        </div>
+                        <div class="label">
+                            <label for="">政治面貌：</label>
+                            <input name="political_status" type="text" th:value="${studentInfo.political_status}" disabled>
+                        </div>
+                        <div>
+                            <label for="">是否独生子女：</label>
+                            <input  name="is_alone" type="text" th:value="${studentInfo.is_alone}" disabled>
+                        </div>
+                    </div>
+                </div>
+                <!--联系方式-->
+                <div class="BasicInformation">
+                    <div class="title">联系方式</div>
+                </div>
+                <div class="content clearfix">
+                    <div class="left fl">
+                        <div>
+                            <label for="">手机号码：</label>
+                            <input  name="phone_number" type="number" th:value="${studentInfo.phone_number}" disabled>
+                        </div>
+                        <div>
+                            <label for="">QQ号码：</label>
+                            <input  name="qq" type="number" th:value="${studentInfo.qq}" disabled>
+                        </div>
+                    </div>
+                    <div class="right fr">
+                        <div>
+                            <label for="">电子邮箱：</label>
+                            <input name="email" type="text" th:value="${studentInfo.email}" disabled>
+                        </div>
+                    </div>
+                </div>
+                <!--辅导员信息-->
+                <div class="BasicInformation">
+                    <div class="title">
+                        辅导员信息
+                    </div>
+                </div>
+                <div class="content clearfix">
+                    <div class="left fl">
+                        <div>
+                            <label for="">姓名：</label>
+                            <input name="teacher_name" type="text" th:value="${studentInfo.teacher_name}" disabled>
+                        </div>
+
+                    </div>
+                    <div class="right fr">
+                        <div>
+                            <label for="">电话号码：</label>
+                            <input name="teacher_phone_number" type="number" th:value="${studentInfo.teacher_phone_number}" disabled>
+                        </div>
+                    </div>
+                    <div class="bottom fr">
+                        <input type="submit" value="提交" style="height: 35px;width: 60px;background-color: #177ec1;color: #e7f2f9 " disabled>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+<script th:inline="javascript">
+    if([[${msg}]] != null){alert([[${msg}]])}
+    $('#emit').on('click',function(){
+        $('input').removeAttr('disabled');
+    });
+</script>
+</body>
+</html>

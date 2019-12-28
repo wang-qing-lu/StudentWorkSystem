@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.firstproject.springbootdemo.dao.studentInfoMapper">
+    <resultMap id="BaseResultMap" type="com.firstproject.springbootdemo.domain.studentInfo" >
+        <id column="student_name" property="student_name" jdbcType="VARCHAR" />
+        <result column="username" property="username" jdbcType="VARCHAR" />
+        <result column="sex" property="sex" jdbcType="VARCHAR" />
+        <result column="nation" property="nation" jdbcType="VARCHAR" />
+        <result column="birth_data" property="birth_data" jdbcType="VARCHAR" />
+        <result column="political_status" property="political_status" jdbcType="VARCHAR" />
+        <result column="is_alone" property="is_alone" jdbcType="VARCHAR" />
+        <result column="id_number" property="id_number" jdbcType="VARCHAR" />
+        <result column="phone_number" property="phone_number" jdbcType="BIGINT" />
+        <result column="email" property="email" jdbcType="VARCHAR" />
+        <result column="qq" property="qq" jdbcType="BIGINT" />
+        <result column="teacher_name" property="teacher_name" jdbcType="VARCHAR" />
+        <result column="teacher_phone_number" property="teacher_phone_number" jdbcType="BIGINT" />
+    </resultMap>
+    <select id="selectAllStudentInfo" resultMap="BaseResultMap">
+        select * from studentinfo;
+    </select>
+    <select id="getInfoByStudentName" resultMap="BaseResultMap">
+        select * from studentinfo WHERE student_name=#{student_name};
+    </select>
+    <select id="getINfoByUsernameAndId" resultMap="BaseResultMap">
+        select * from studentinfo WHERE username=#{username} AND id_number=#{id_number};
+    </select>
+    <delete id="deleteStudentInfo" >
+         DELETE FROM studentinfo WHERE student_name=#{student_name};
+    </delete>
+    <update id="updateStudentInfo" >
+        UPDATE studentinfo SET  username=#{username},sex=#{sex},nation=#{nation},birth_data=#{birth_data},political_status=#{political_status},is_alone=#{is_alone},id_number=#{id_number},teacher_name=#{teacher_name},
+        teacher_phone_number=#{teacher_phone_number},phone_number = #{phone_number} WHERE student_name = #{student_name};
+    </update>
+    <insert id="insertStudentInfo" >
+        INSERT INTO studentinfo (student_name,username,sex,nation,birth_data,political_status,is_alone,id_number,phone_number,email,qq,teacher_name,teacher_phone_number)
+        VALUES (#{student_name},#{username},#{sex},#{nation},#{birth_data},#{political_status},#{is_alone},#{id_number},#{phone_number},#{email},#{qq},#{teacher_name},#{teacher_phone_number})
+    </insert>
+</mapper>

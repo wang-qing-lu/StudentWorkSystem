@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="stylesheet" href="css/common.css">
+    <link rel="stylesheet" type="text/css" href="css/StudentInformation.css"/>
+</head>
+<body>
+<div class="container">
+    <div class="content">
+        <div class="bx">
+            <div class="box">
+                <div class="top">
+                    <div class="left">当前位置>档案信息</div>
+                    <div class="right">
+                        <span class="l" style="margin-right: 20px">更新</span>
+                        <!--<span class="r">保存</span>-->
+                    </div>
+                </div>
+                <div class="content">
+                    <div class="left">
+                        <i class="column"></i>
+                        <span class="tit">档案关系</span>
+                    </div>
+                </div>
+                <form role="form"  id="studentInformation" method="post" action="/editStudentPubMed" >
+                    <div class="bottom">
+                        <div class="one">
+                            <div class="left">
+                                <span>代理类型：</span>
+                                <input type="text" name="proxy_type" th:value="${studentinformation.proxy_type}" disabled/>
+                            </div>
+                            <div class="right">
+                                <span>有无组织关系：</span>
+                                <input type="text" name="organization_relationship" th:value="${studentinformation.organization_relationship}" disabled/>
+                            </div>
+                        </div>
+                        <div class="one">
+                            <div class="left">
+                                <span>人才代理标志：</span>
+                                <input type="text" name="talent_sign" th:value="${studentinformation.talent_sign}" disabled/>
+                            </div>
+                            <div class="right">
+                                <span>是否签订三方协议：</span>
+                                <input type="text" name="sign_the_agreement" th:value="${studentinformation.sign_the_agreement}" disabled/>
+                            </div>
+                        </div>
+                        <div class="one">
+                            <div class="left">
+                                <span>公司名称：</span>
+                                <input type="text" name="company_name" th:value="${studentinformation.company_name}" disabled/>
+                            </div>
+                        </div>
+                        <div class="bottom fr">
+                            <input type="submit" value="提交" style="height: 35px;width: 60px;background-color: #177ec1;color: #e7f2f9 " disabled>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="js/jquery-1.9.1.min.js"></script>
+<script th:inline="javascript">
+    if([[${msg}]] !=null){alert([[${msg}]])}
+    $('.l').click(function () {
+        $('input').removeAttr('disabled');
+    });
+</script>
+</body>
+</html>

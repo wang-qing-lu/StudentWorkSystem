@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.firstproject.springbootdemo.dao.punishmentinfoMapper">
+    <resultMap id="BaseResultMap" type="com.firstproject.springbootdemo.domain.Punishment" >
+        <id column="student_name" property="student_name" jdbcType="VARCHAR" />
+        <result column="punishment_date" property="punishment_date" jdbcType="VARCHAR" />
+        <result column="punishment_grade" property="punishment_grade" jdbcType="VARCHAR" />
+        <result column="punishment_name" property="punishment_name" jdbcType="VARCHAR" />
+        <result column="punishment_reason" property="punishment_reason" jdbcType="VARCHAR" />
+        <result column="manager_name" property="manager_name" jdbcType="VARCHAR" />
+    </resultMap>
+    <select id="selectAllpunishmentinfo" resultMap="BaseResultMap">
+        select * from punishment;
+    </select>
+    <select id="selectPunishmentinfoByStudentname" resultMap="BaseResultMap">
+        select * from punishment WHERE student_name=#{student_name};
+    </select>
+    <delete id="delectPunishmentinfo" >
+         DELETE FROM punishment WHERE student_name=#{student_name};
+    </delete>
+    <insert id="insertPunishmentinfo" >
+        INSERT INTO punishment (student_name,punishment_date,punishment_grade,punishment_name,punishment_reason,manager_name)
+        VALUES (#{student_name},#{punishment_date},#{punishment_grade},#{punishment_name},#{punishment_reason},#{manager_name})
+    </insert>
+</mapper>

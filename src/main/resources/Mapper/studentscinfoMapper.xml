@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.firstproject.springbootdemo.dao.studentscinfoMapper">
+    <resultMap id="BaseResultMap" type="com.firstproject.springbootdemo.domain.Studentscinfo" >
+        <id column="sshool_id" property="school_id" jdbcType="INTEGER" />
+        <result column="campus" property="campus" jdbcType="VARCHAR" />
+        <result column="college_name" property="college_name" jdbcType="VARCHAR" />
+        <result column="college_province_id" property="college_province_id" jdbcType="VARCHAR" />
+        <result column="college_department_id" property="college_department_id" jdbcType="VARCHAR" />
+        <result column="branch_name" property="branch_name" jdbcType="VARCHAR" />
+        <result column="branch_id" property="branch_id" jdbcType="VARCHAR" />
+        <result column="branch_province_id" property="branch_province_id" jdbcType="VARCHAR" />
+    </resultMap>
+    <select id="selectAllStudentscinfo" resultMap="BaseResultMap">
+        select * from studentscinfo;
+    </select>
+    <select id="selectStudentscinfoBySchoolId" resultMap="BaseResultMap">
+        select * from studentscinfo WHERE school_id=#{school_id};
+    </select>
+    <delete id="delectStudentscinfo" >
+         DELETE FROM studentscinfo WHERE school_id=#{school_id};
+    </delete>
+    <update id="updateStudentscinfo" >
+        UPDATE studentscinfo SET campus=#{campus},college_name=#{college_name},college_province_id=#{college_province_id},
+        college_department_id=#{college_department_id},branch_name=#{branch_name},branch_id=#{branch_id},branch_province_id=#{branch_province_id} WHERE school_id=#{school_id}
+    </update>
+    <insert id="insertStudentscinfo" >
+        INSERT INTO studentscinfo (school_id,campus,college_name,college_province_id,college_department_id,branch_name,branch_id,branch_province_id)
+        VALUES (#{school_id},#{campus},#{college_name},#{college_province_id},#{college_department_id},#{branch_name},#{branch_id},#{branch_province_id})
+    </insert>
+</mapper>

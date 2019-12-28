@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.firstproject.springbootdemo.dao.studentpubmedMapper">
+    <resultMap id="BaseResultMap" type="com.firstproject.springbootdemo.domain.Studentpubmed" >
+        <id column="student_name" property="student_name" jdbcType="VARCHAR" />
+        <result column="match_of_major" property="match_of_major" jdbcType="VARCHAR" />
+        <result column="registration_card_number" property="registration_card_number" jdbcType="BIGINT" />
+        <result column="file_to_school" property="file_to_school" jdbcType="VARCHAR" />
+        <result column="give_file_person" property="give_file_person" jdbcType="VARCHAR" />
+        <result column="is_fulltime_graduate" property="is_fulltime_graduate" jdbcType="VARCHAR" />
+        <result column="directed_or_commissioned" property="directed_or_commissioned" jdbcType="VARCHAR" />
+        <result column="to_school" property="to_school" jdbcType="VARCHAR" />
+        <result column="school_postcode" property="school_postcode" jdbcType="INTEGER" />
+        <result column="school_adress" property="school_adress" jdbcType="VARCHAR" />
+        <result column="school_phone_number" property="school_phone_number" jdbcType="INTEGER" />
+        <result column="is_push_graduate" property="is_push_graduate" jdbcType="VARCHAR" />
+    </resultMap>
+    <select id="selectAllStudentpubmed" resultMap="BaseResultMap">
+        select * from studentpubmed;
+    </select>
+    <select id="selectStudentpubmedByStudentname" resultMap="BaseResultMap">
+        select * from studentpubmed WHERE student_name=#{student_name};
+    </select>
+    <delete id="delectStudentpubmed" >
+         DELETE FROM studentpubmed WHERE student_name=#{student_name};
+    </delete>
+    <update id="updateStudentpubmed" >
+        UPDATE studentpubmed SET  match_of_major=#{match_of_major},registration_card_number=#{registration_card_number},file_to_school=#{file_to_school},give_file_person=#{give_file_person},is_fulltime_graduate=#{is_fulltime_graduate},directed_or_commissioned=#{directed_or_commissioned},to_school=#{to_school},school_postcode=#{school_postcode},
+        school_adress=#{school_adress},school_phone_number = #{school_phone_number},is_push_graduate=#{is_push_graduate} WHERE student_name = #{student_name};
+    </update>
+    <insert id="insertStudentpubmed" >
+        INSERT INTO studentpubmed (student_name,match_of_major,registration_card_number,file_to_school,give_file_person,is_fulltime_graduate,directed_or_commissioned,to_school,school_postcode,school_adress,school_phone_number,is_push_graduate)
+        VALUES (#{student_name},#{match_of_major},#{registration_card_number},#{file_to_school},#{give_file_person},#{is_fulltime_graduate},#{directed_or_commissioned},#{to_school},#{school_postcode},#{school_adress},#{school_phone_number},#{is_push_graduate})
+    </insert>
+</mapper>

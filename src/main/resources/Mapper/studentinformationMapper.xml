@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.firstproject.springbootdemo.dao.studentinformationMapper">
+    <resultMap id="BaseResultMap" type="com.firstproject.springbootdemo.domain.studentinformation" >
+        <id column="student_name" property="student_name" jdbcType="VARCHAR" />
+        <result column="proxy_type" property="proxy_type" jdbcType="VARCHAR" />
+        <result column="organization_relationship" property="organization_relationship" jdbcType="VARCHAR" />
+        <result column="talent_sign" property="talent_sign" jdbcType="VARCHAR" />
+        <result column="sign_the_agreement" property="sign_the_agreement" jdbcType="VARCHAR" />
+        <result column="company_name" property="company_name" jdbcType="VARCHAR" />
+    </resultMap>
+    <select id="selectAllStudentinformation" resultMap="BaseResultMap">
+        select * from studentinformation;
+    </select>
+    <select id="selectStudentinformationByStudentname" resultMap="BaseResultMap">
+        select * from studentinformation WHERE student_name=#{student_name};
+    </select>
+    <delete id="delectStudentinformation" >
+         DELETE FROM studentinformation WHERE student_name=#{student_name};
+    </delete>
+    <update id="updateStudentinformation" >
+        UPDATE studentinformation SET proxy_type=#{proxy_type},organization_relationship=#{organization_relationship},talent_sign=#{talent_sign},
+        sign_the_agreement=#{sign_the_agreement},company_name=#{company_name} WHERE student_name=#{student_name}
+    </update>
+    <insert id="insertStudentinformation" >
+        INSERT INTO studentinformation (student_name,proxy_type,organization_relationship,talent_sign,sign_the_agreement,company_name)
+        VALUES (#{student_name},#{proxy_type},#{organization_relationship},#{talent_sign},#{sign_the_agreement},#{company_name})
+    </insert>
+</mapper>

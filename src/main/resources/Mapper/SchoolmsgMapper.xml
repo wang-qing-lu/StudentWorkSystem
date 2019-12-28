@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.firstproject.springbootdemo.dao.schoolmsgMapper">
+    <resultMap id="BaseResultMap" type="com.firstproject.springbootdemo.domain.Schoolmsg" >
+        <id column="student_name" property="student_name" jdbcType="VARCHAR" />
+        <result column="candidate_number" property="candidate_number" jdbcType="BIGINT" />
+        <result column="old_candidate_number" property="old_candidate_number" jdbcType="BIGINT" />
+        <result column="join_school_time" property="join_school_time" jdbcType="VARCHAR" />
+        <result column="gradaution_time" property="gradaution_time" jdbcType="VARCHAR" />
+        <result column="difficult_students_category" property="difficult_students_category" jdbcType="VARCHAR" />
+        <result column="location_of_student" property="location_of_student" jdbcType="VARCHAR" />
+        <result column="student_status" property="student_status" jdbcType="VARCHAR" />
+        <result column="drop_out_status" property="drop_out_status" jdbcType="VARCHAR" />
+        <result column="is_worker_school" property="is_worker_school" jdbcType="VARCHAR" />
+        <result column="overview" property="overview" jdbcType="VARCHAR" />
+        <result column="file_is_transferred" property="file_is_transferred" jdbcType="VARCHAR" />
+        <result column="accunt_is_transferred" property="accunt_is_transferred" jdbcType="VARCHAR" />
+        <result column="before_school" property="before_school" jdbcType="VARCHAR" />
+        <result column="education" property="education" jdbcType="VARCHAR" />
+        <result column="academic_system" property="academic_system" jdbcType="VARCHAR" />
+        <result column="disciplines" property="disciplines" jdbcType="VARCHAR" />
+        <result column="classname" property="classname" jdbcType="VARCHAR" />
+        <result column="professional_title" property="professional_title" jdbcType="VARCHAR" />
+        <result column="faculty" property="faculty" jdbcType="VARCHAR" />
+        <result column="main_foreign_language" property="main_foreign_language" jdbcType="VARCHAR" />
+    </resultMap>
+    <select id="selectAllSchoolmsg" resultMap="BaseResultMap">
+        select * from schoolmsg;
+    </select>
+    <select id="selectSchoolmsgByStudentname" resultMap="BaseResultMap">
+        select * from schoolmsg WHERE student_name=#{student_name};
+    </select>
+    <delete id="delectSchoolmsg" >
+         DELETE FROM schoolmsg WHERE student_name=#{student_name};
+    </delete>
+    <update id="updateSchoolmsg" >
+        UPDATE schoolmsg SET candidate_number=#{candidate_number},old_candidate_number=#{old_candidate_number},join_school_time=#{join_school_time},gradaution_time=#{gradaution_time},difficult_students_category=#{difficult_students_category},
+        location_of_student=#{location_of_student},student_status=#{student_status},drop_out_status=#{drop_out_status},is_worker_school=#{is_worker_school},overview=#{overview},file_is_transferred=#{file_is_transferred},
+        accunt_is_transferred=#{accunt_is_transferred},before_school=#{before_school},education=#{education},academic_system=#{academic_system},disciplines=#{disciplines},professional_title=#{professional_title},faculty=#{faculty},
+        classname=#{classname},main_foreign_language=#{main_foreign_language} WHERE student_name = #{student_name};
+    </update>
+    <insert id="insertSchoolmsg" >
+        INSERT INTO schoolmsg (student_name,candidate_number,old_candidate_number,join_school_time,gradaution_time,difficult_students_category,location_of_student,student_status,drop_out_status,is_worker_school,overview,file_is_transferred,accunt_is_transferred,
+        before_school,education,academic_system,disciplines,professional_title,faculty,classname,main_foreign_language)
+        VALUES (#{student_name},#{candidate_number},#{old_candidate_number},#{join_school_time},#{gradaution_time},#{difficult_students_category},#{location_of_student},#{student_status},#{drop_out_status},#{is_worker_school},#{overview},#{file_is_transferred},#{accunt_is_transferred},
+        #{before_school},#{education},#{academic_system},#{disciplines},#{professional_title},#{faculty},#{classname},#{main_foreign_language})
+    </insert>
+</mapper>
