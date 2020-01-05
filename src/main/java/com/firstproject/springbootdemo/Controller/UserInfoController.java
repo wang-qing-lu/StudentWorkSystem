@@ -1,5 +1,9 @@
 package com.firstproject.springbootdemo.Controller;
 
+import com.firstproject.springbootdemo.domain.Teacher;
+import com.firstproject.springbootdemo.domain.TeacherInfo;
+import com.firstproject.springbootdemo.service.teacherInfoService;
+import com.firstproject.springbootdemo.service.teacherService;
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.ComponentScan;
@@ -20,7 +24,10 @@ public class UserInfoController {
     private StudentService studentService;
     @Autowired
     private studentInfoService studentInfoService;
-
+    @Autowired
+    private teacherService teacherService;
+    @Autowired
+    private teacherInfoService teacherInfoService;
     /**
      * 显示忘记密码页面
      * @return
@@ -46,21 +53,37 @@ public class UserInfoController {
             return "password";
         }
         else {
-            studentInfo info = new studentInfo();
-            info.setUsername(username);
-            info.setId_number(id_number);
-            studentInfo studentInfo = studentInfoService.getINfoByUsernameAndId(info);
-            if (studentInfo != null) {
-                System.out.println(studentInfo.toString());
-                Student student = studentService.getUserByUsername(username);
-                student.setPassword(password);
-                studentService.update(student);
-                return "login";
+            Student student = studentService.getUserByUsername(username);
+            Teacher teacher = teacherService.selectTeacherInfoByUsername(username);
+            if(student != null) {
+                studentInfo info = new studentInfo();
+                info.setUsername(username);
+                info.setId_number(id_number);
+                studentInfo studentInfo = studentInfoService.getINfoByUsernameAndId(info);
+                if (studentInfo != null) {
+                    System.out.println(studentInfo.toString());
+                    student.setPassword(password);
+                    studentService.update(student);
+                    return "login";
+                } else {
+                    model.addAttribute("msg", "用户名或身份证号不符");
+                    return "password";
+                }
             }
-            else{
-                model.addAttribute("msg","用户名或身份证号不符");
-                return "password";
+            else if(teacher != null){
+                TeacherInfo teacherInfo = teacherInfoService.selectTeacherInfoByUsername(username);
+                if(teacherInfo.getTeacher_id_number().equals(id_number)){
+                    teacher.setPassword(password);
+                    teacherService.UpdateTeacherInfo(teacher);
+                    return "login";
+                }
+                else{
+                    model.addAttribute("msg", "用户名或身份证号不符");
+                    return "password";
+                }
             }
+            model.addAttribute("msg", "用户名或身份证号不符");
+            return "password";
         }
     }
 }

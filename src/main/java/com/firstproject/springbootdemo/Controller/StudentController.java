@@ -57,7 +57,7 @@ public class StudentController {
     }
 
     /**
-     * 用户登录
+     * 学生用户登录
      * @param username
      * @param password
      * @return
@@ -87,7 +87,6 @@ public class StudentController {
                return "index";
            }
        }
-
     }
 
     /**
@@ -241,6 +240,7 @@ public class StudentController {
         else{
             System.out.println("开始更新学生家庭信息！");
             try {
+                familyinfo.setStudent_name(studentname);
                 familyinfoService.updateFamilyinfo(familyinfo);
                 model.addAttribute("msg","更新成功！");
                 return "successful";
@@ -329,6 +329,12 @@ public class StudentController {
         return "school-msg";
     }
 
+    /**
+     * 更新或写入学籍信息
+     * @param schoolmsg
+     * @param model
+     * @return
+     */
     @RequestMapping(value = "editSchoolMsg",method = RequestMethod.POST)
     public String editSchoolMsg(Schoolmsg schoolmsg,Model model){
         Schoolmsg oldschoolmsg =schoolmsgService.selectSchoolmsgByStudentname(studentname);
@@ -344,6 +350,7 @@ public class StudentController {
                     model.addAttribute("msg", "带星号的为必填项!");
                     return "showSchoolMsg";
                 }
+                schoolmsg.setStudent_name(studentname);
                 schoolmsgService.updateSchoolmsg(schoolmsg);
                 model.addAttribute("msg","更新成功!");
                 return "successful";
@@ -355,7 +362,7 @@ public class StudentController {
             }
         }
         else {
-            System.out.println("开始写入就业信息！");
+            System.out.println("开始写入学籍信息！");
             try {
                 if("".equals(schoolmsg.getClassname()) || "".equals(schoolmsg.getFaculty()) || "".equals(schoolmsg.getProfessional_title())
                 || "".equals(schoolmsg.getDisciplines()) || "".equals(schoolmsg.getAcademic_system()) || "".equals(schoolmsg.getEducation())){
@@ -425,6 +432,7 @@ public class StudentController {
             }
             System.out.println("开始更新档案信息！");
             try {
+                Studentinformation.setStudent_name(studentname);
                 studentinformationService.updateStudentinformation(Studentinformation);
                 model.addAttribute("msg","更新成功!");
                 return "successful";
@@ -484,6 +492,7 @@ public class StudentController {
             }
             System.out.println("开始更新就业信息！");
             try {
+                studenteminformation.setStudent_name(studentname);
                 studenteminformationService.updateStudenteminformation(studenteminformation);
                 model.addAttribute("msg","更新成功!");
                 return "successful";
@@ -576,8 +585,9 @@ public class StudentController {
                 //model.addAttribute(studentPubMedInfo);
                 return "showStudentPubMed";
             }
-            System.out.println("开始更新就业信息！");
+            System.out.println("开始更新考研信息！");
             try {
+                studentpubmed.setStudent_name(studentname);
                 studentpubmedService.updateStudentpubmed(studentpubmed);
                 model.addAttribute("msg","更新成功!");
                 return "successful";
@@ -589,7 +599,7 @@ public class StudentController {
             }
         }
         else {
-            System.out.println("开始写入就业信息！");
+            System.out.println("开始写入考研信息！");
             try {
                 studentpubmed.setStudent_name(studentname);
                 System.out.println(studentpubmed.toString());
@@ -615,6 +625,15 @@ public class StudentController {
         return "StudentRevise";
     }
 
+    /**
+     * 修改密码
+     * @param new_password
+     * @param old_password
+     * @param password_again
+     * @param model
+     * @return
+     * @throws Exception
+     */
     @RequestMapping("editpassword")
     public String editpassword(String new_password,String old_password,String password_again,Model model) throws Exception {
         System.out.println("开始修改密码!");

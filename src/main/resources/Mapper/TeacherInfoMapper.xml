@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.firstproject.springbootdemo.dao.teacherInfoMapper">
+    <resultMap id="BaseResultMap" type="com.firstproject.springbootdemo.domain.TeacherInfo" >
+        <id column="teacher_name" property="teacher_name" jdbcType="VARCHAR" />
+        <result column="teacher_address" property="teacher_address" jdbcType="VARCHAR" />
+        <result column="teacher_birthday" property="teacher_birthday" jdbcType="VARCHAR" />
+        <result column="teacher_email" property="teacher_email" jdbcType="VARCHAR" />
+        <result column="teacher_grade" property="teacher_grade" jdbcType="VARCHAR" />
+        <result column="teacher_id_number" property="teacher_id_number" jdbcType="VARCHAR" />
+        <result column="teacher_nation" property="teacher_nation" jdbcType="VARCHAR" />
+        <result column="teacher_phone_number" property="teacher_phone_number" jdbcType="VARCHAR" />
+        <result column="teacher_political_status" property="teacher_political_status" jdbcType="VARCHAR" />
+        <result column="teacher_qq" property="teacher_qq" jdbcType="VARCHAR" />
+        <result column="teacher_sex" property="teacher_sex" jdbcType="VARCHAR" />
+        <result column="teacher_username" property="teacher_username" jdbcType="VARCHAR" />
+        <result column="teacher_course" property="teacher_course" jdbcType="VARCHAR" />
+    </resultMap>
+    <select id="selsectAllTeacherInfo" resultMap="BaseResultMap">
+        select * from teacherinfo WHERE teacher_grade=#{teacher_grade};
+    </select>
+    <select id="selectTeacherInfoByUsername" resultMap="BaseResultMap">
+        select * from teacherinfo WHERE teacher_username=#{teacher_username};
+    </select>
+    <delete id="delectTeacherInfo" >
+         DELETE FROM teacherinfo WHERE teacher_username=#{teacher_username};
+    </delete>
+    <update id="updateTeacherInfo" >
+        UPDATE teacherinfo SET teacher_name=#{teacher_name},teacher_address=#{teacher_address},teacher_birthday=#{teacher_birthday},teacher_email=#{teacher_email},teacher_grade=#{teacher_grade},teacher_qq=#{teacher_qq},teacher_sex=#{teacher_sex},
+          teacher_id_number=#{teacher_id_number},teacher_nation=#{teacher_nation},teacher_phone_number=#{teacher_phone_number},teacher_political_status=#{teacher_political_status},theacher_course=#{teacher_course} WHERE teacher_username = #{teacher_username};
+    </update>
+    <insert id="insertTeacherInfo" >
+        INSERT INTO teacherinfo (teacher_name,teacher_address,teacher_birthday,teacher_email,teacher_grade,teacher_qq,teacher_sex,teacher_id_number,teacher_nation,teacher_phone_number,teacher_political_status,teacher_username,teacher_course)
+        VALUES (#{teacher_name},#{teacher_address},#{teacher_birthday},#{teacher_email},#{teacher_grade},#{teacher_qq},#{teacher_sex},#{teacher_id_number},#{teacher_nation},#{teacher_phone_number},#{teacher_political_status},#{teacher_username},#{teacher_course})
+    </insert>
+</mapper>

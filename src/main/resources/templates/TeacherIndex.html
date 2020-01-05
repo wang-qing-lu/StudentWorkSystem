@@ -3,12 +3,79 @@
 	<head>
 		<meta charset="UTF-8">
 		<title></title>
-	</head>
-	<frameset frameborder="0" rows="60,*">
-		<frame src="StudentTop.html" noresize="noresize" scrolling="no" />
-		<frameset frameborder="0" cols="210,*">
-			<frame src="TeacherLeft.html" noresize="noresize" scrolling="no" />
-			<frame src="TeacherRight.html" noresize="noresize" scrolling="yes" name="main" />
-		</frameset>
-	</frameset>
+	<style type="text/css">
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		frame{
+			height: 2000px;
+		}
+		body
+		{
+			margin: 0;
+			padding: 0;
+			border: 0;
+			overflow: hidden;
+			height: 100%;
+			max-height: 100%;
+		}
+
+		#frameTop
+		{
+			position: absolute;
+			top: 0;
+			left: 0;
+			height: 100px;
+			width: 100%;
+			overflow: hidden;
+			vertical-align: middle;
+		}
+
+		#frameContentLeft
+		{
+			position: fixed;
+			top: 50px;
+			left: 0;
+			height: 100%;
+			width: 200px;
+			overflow: hidden;
+			vertical-align: top;
+			background-color: #D2E6FA;
+		}
+		#frameContentRight
+		{
+			position: absolute;
+			left: 200px;
+			top: 50px;
+			height: 100%;
+			width: 100%;
+			right: 0;
+			bottom: 0;
+			overflow: hidden;
+			background: #fff;
+		}
+
+	</style>
+</head>
+	<!--<frameset frameborder="0" rows="60,*">-->
+		<!--<frame src="StudentTop.html" noresize="noresize" scrolling="no" />-->
+		<!--<frameset frameborder="0" cols="210,*">-->
+			<!--<frame src="TeacherLeft.html" noresize="noresize" scrolling="no" />-->
+			<!--<frame src="TeacherRight.html" noresize="noresize" scrolling="yes" name="main" />-->
+		<!--</frameset>-->
+	<!--</frameset>-->
+	<body>
+
+	<div>
+		<iframe id="frameTop" src="/studentTop"></iframe>
+	</div>
+
+	<div>
+		<iframe id="frameContentLeft" src="/TeacherLeft"></iframe>
+		<iframe id="frameContentRight" name="main" scrolling="yes" frameborder="0" ></iframe>
+	</div>
+
+	</body>
 </html>
+

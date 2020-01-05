@@ -1,10 +1,11 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
     <link rel="stylesheet" href="css/common.css">
     <link rel="stylesheet" href="css/TeacherPersonalInfo.css">
+    <link rel="stylesheet" href="css/student.css">
 </head>
 <body>
 <div class="container flgure">
@@ -14,86 +15,98 @@
             <li>联系方式</li>
         </ul>
         <div class="basic">
+            <form  role="form"  id="teacherInfo" method="post" action="/emitTeacherInfo" >
             <div class="select active">
-                <p>
-                    <span>编辑</span>
-                    <span style="margin-left: 20px">保存</span>
-                </p>
+                <div class="bottom fr">
+                    <span href="javascript:;"  class="l">编辑</span>
+                </div>
                 <div class="left fl">
                     <div>
                         <label for="">姓名：</label>
-                        <input type="text" value="">
+                         <input name="teacher_name" type="text" value="" disabled>
                     </div>
                     <div>
                         <label for="">性别：</label>
-                        <input type="text" value="">
+                        <input name="teacher_sex" type="text" value="" disabled>
                     </div>
                     <div>
                         <label for="">出生日期：</label>
-                        <input type="text" value="">
+                        <input name="teacher_birthday" type="text" value="" disabled>
                     </div>
                     <div>
                         <label for="">身份证号：</label>
-                        <input type="text" value="" class="id">
+                        <input name="teacher_id_number" type="text" value="" class="id" disabled>
+                    </div>
+                    <div><label>家庭地址:</label>
+                        <input name="teacher_address" type="text" value="" disabled>
+                    </div>
+                    <div>
+                        <label for="">所教科目：</label>
+                        <input name="teacher_course" type="text" value="" disabled>
                     </div>
                 </div>
                 <div class="right fr">
                     <div>
                         <label for="">工号：</label>
-                        <input type="number" value="">
+                        <input name="teacher_username" type="number" value="" disabled>
                     </div>
                     <div>
                         <label for="">民族：</label>
-                        <input type="text" value="">
+                        <input name="teacher_nation" type="text" value="" disabled>
                     </div>
                     <div class="label">
                         <label for="">政治面貌：</label>
-                        <input type="text" value="">
+                        <input name="teacher_political_status" type="text" value="" disabled>
                     </div>
                     <div  class="label">
                         <label for="">教师等级：</label>
-                        <input type="text" value="">
+                        专业课教师：<input type="radio" name="teacher_grade" value="0" style="width: 20px; margin-top: 12px;">
+                        副科教师：<input type="radio" name="teacher_grade" value="1" style="width: 20px;">
                     </div>
                 </div>
 
             </div>
             <div class="select ">
-                <p>
-                    <span>编辑</span>
-                    <span style="margin-left: 20px">保存</span>
-                </p>
+                <div class="bottom fr">
+                    <span href="javascript:;"  class="l">编辑</span>
+                </div>
                 <div class="left fl">
                     <div>
                         <label for="">手机号码：</label>
-                        <input type="number" value="">
+                        <input name="teacher_phone_number" type="number" value="" disabled>
                     </div>
                     <div>
                         <label for="">QQ号码：</label>
-                        <input type="number" value="">
+                        <input name="teacher_qq" type="number" value="" disabled>
                     </div>
                 </div>
                 <div class="right fr">
-
                     <div>
                         <label for="">电子邮箱：</label>
-                        <input type="email" value="">
+                        <input name="teacher_email" type="email" value="" disabled>
                     </div>
-
-
                 </div>
-
             </div>
-            <div class="list list1 fl "><label>家庭地址</label> : <input type="text" value=""  name="username" style="width: 78px;"/> 省 <input type="text" value="" name="username" style="width: 98px;"/> 市 <input type="text" value=""  name="username" style="width: 98px;"/> 区/县 <input type="text" value="" name="username" style="width: 98px;"/> 街道 <input type="text" value="" name="username" style="width: 234px; margin: 30px 0 0 79px"/></div>
+                <div class="right fr">
+                    <input type="submit" value="提交" style="height: 35px;width: 60px;background-color: #177ec1;color: #e7f2f9 " disabled>
+                </div>
+            </form>
         </div>
+
         </div>
     </div>
 </div>
 <script src="js/jquery-1.9.1.min.js"></script>
-<script>
+<script th:inline="javascript">
+    if([[${msg}]]!=null){alert([[${msg}]])}
+    $('.l').on('click',function(){
+        $('input').removeAttr('disabled');
+    });
     $('.info li').click(function() {
         $(this).addClass("active").siblings().removeClass("active");
         $('.basic .select').eq($("ul li").index(this)).addClass("active").siblings().removeClass("active")
     })
+
 </script>
 </body>
 </html>

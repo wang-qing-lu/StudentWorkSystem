@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="css/common.css">
+    <link rel="stylesheet" href="css/punishment.css">
+</head>
+<body>
+<div class="container">
+    <div class="content">
+        <div class="header clearfix">
+            <div class="top fl">
+                当前位置><span th:text="${name}"></span>>就业调查
+            </div>
+            <!--<div class="bottom fr">-->
+                <!--<a href="javascript:;"  class="l"></a>-->
+                <!--&lt;!&ndash;<a href="javascript:;" class="r">保存</a>&ndash;&gt;-->
+            <!--</div>-->
+        </div>
+        <div class="main">
+            <!--基础信息-->
+            <div class="BasicInformation">
+                <div class="title">
+                    基础调查
+                </div>
+            </div>
+                <div class="content clearfix">
+                    <div class="left fl">
+                        <div>
+                            <label for="">期望工作地域：</label>
+                            <input name="expected_work_area" type="text" th:value="${investigation.expected_work_area}" class="oInp" disabled>
+                        </div>
+                        <div>
+                            <label for="">期望单位性质：</label>
+                            <input  name="expected_company" type="text" th:value="${investigation.expected_company}" class="oInp" disabled>
+                        </div>
+                        <div>
+                            <label for="">是否准备升学：</label>
+                            <input  name="is_further_education" type="text" th:value="${investigation.is_further_education}" class="oInp" disabled>
+                        </div>
+                        <div>
+                            <label for="">备注说明：</label>
+                            <input name="remark" type="text" th:value="${investigation.remark}" style="width:170px;" class="oInp" disabled>
+                        </div>
+                    </div>
+                    <div class="right fr">
+                        <div>
+                            <label for="">期望工作地点：</label>
+                            <input name="expected_work_address" type="text" th:value="${investigation.expected_work_address}" class="oInp" disabled>
+                        </div>
+                        <div>
+                            <label for="">毕业期望薪酬：</label>
+                            <input name="expected_wage" type="number" th:value="${investigation.expected_wage}" class="oInp" disabled>
+                        </div>
+                        <div>
+                            <label for="">工作与专业相关度：</label>
+                            <input name="work_profession_related" type="text" th:value="${investigation.work_profession_related}" class="oInp" disabled>
+                        </div>
+                    </div>
+                    <!--<div class="bottom fr">-->
+                        <!--<input type="submit" value="提交" style="height: 35px;width: 60px;background-color: #177ec1;color: #e7f2f9 " disabled>-->
+                    <!--</div>-->
+                    <!--<div class="reason fl">-->
+                    <!--<p>毕业去向情况统计：</p>-->
+                    <!--<div style="margin-left: 65px ;width:515px;height:118px;">-->
+                    <!--<textarea id="situation"  class="oInp" disabled></textarea>-->
+                    <!--</div>-->
+                    <!--</div>-->
+                </div>
+        </div>
+    </div>
+</div>
+<script src="js/jquery-1.9.1.min.js"></script>
+<script>
+    $('.l').on('click',function(){
+        $('input').removeAttr('disabled');
+    });
+    // $('select').attr('value','0');
+    // $.ajax({
+    //     url: "http://101.201.154.205:9090/survey/getSurveyByStuId",
+    //     data: {
+    //         stuId:1,
+    //         t: Math.random()
+    //     },
+    //     type: 'get',
+    //     dataType: 'jsonp',
+    //     'jsonp': 'callback'
+    //     }).then(function (res) {
+    //     $('select option').each(function(index,arg){
+    //         if($(this).val() == res.entrance){
+    //             $(this).attr('selected','selected');
+    //         }
+    //     });
+    //     $('select').attr('value',res.entrance);
+    //     $('#expect_salary').attr('value',res.expect_salary);
+    //     $('#situation').text(res.situation);
+    //     $('#city').attr('value',res.city);
+    //     $('#work_pro').attr('value',res.work_pro);
+    //     $('#remarks').attr('value',res.remarks);
+    //     $('#unit_pro').attr('value',res.unit_pro);
+    //     $('#province').attr('value',res.province);
+    //
+    //
+    // },function (err) {
+    //     console.log(err);
+    // });
+    // $('.l').click(function () {
+    //     $('.oInp').removeAttr('disabled');
+    // });
+    //
+    // $('.r').click(function () {
+    //     $('.oInp').attr('disabled','disabled');
+    //
+    //     $.ajax({
+    //         url: "http://101.201.154.205:9090/survey/surveyUpdateDo",
+    //         data: {
+    //             stu_id:"1",
+    //             expect_salary:$('#expect_salary').val(),
+    //             entrance:$('select').val(),
+    //             remarks:$('#remarks').val(),
+    //             province:$('#province').val(),
+    //             city:$('#city').val(),
+    //             situation:$('#situation').val(),
+    //             work_pro:$('#work_pro').val(),
+    //             unit_pro:$('#unit_pro').val(),
+    //             t: Math.random()
+    //         },
+    //         type: 'get',
+    //         dataType: 'jsonp',
+    //         'jsonp': 'callback'
+    //     }).then(function (res) {
+    //         console.log(res);
+    //
+    //     },function (err) {
+    //         console.log(err);
+    //     });
+    //
+    //
+    // });
+
+</script>
+
+</body>
+</html>

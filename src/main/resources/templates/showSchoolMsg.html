@@ -2,192 +2,208 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Document</title>
-    <link rel="stylesheet" href="css/common.css" >
+    <title></title>
+    <link rel="stylesheet" href="css/common.css">
+    <link rel="stylesheet" href="css/student.css">
     <link rel="stylesheet" href="css/school-msg.css">
-
 </head>
 <body>
 <div class="school-msg">
     <div class="pos-set wrap">
         <span>当前位置>学籍信息</span>
         <div class="bottom fr">
-            <span class="l" style="margin-right: 20px">编辑</span>
+            <span class="l" style="margin-right: 20px">更新</span>
             <!--<span class="r">保存</span>-->
         </div>
     </div>
-    <div class="basics-msg">
-        <p>基础信息</p>
-    </div>
     <form role="form"  id="schoolMsgInfo" method="post" action="/editSchoolMsg" >
-        <div class="main">
-            <div class="basics-list">
-                <ul class="clearfix">
-                    <li>
-                        <label for="">考生号码 :</label>
-                        <div class="inp-border">
-                            <input type="number" th:value="${schoolmsg.candidate_number}" name="candidate_number" disabled>
-                        </div>
-                    </li>
-                    <li>
-                        <label for="">原考生号 :</label>
-                        <div class="inp-border">
-                            <input type="number" th:value="${schoolmsg.old_candidate_number}" name="old_candidate_number" disabled>
-                        </div>
-                    </li>
-                    <li>
-                        <label for="">入校时间 :</label>
-                        <div class="inp-border">
-                            <input type="text" th:value="${schoolmsg.join_school_time}" name="join_school_time" disabled>
-                        </div>
-                    </li>
-                    <li>
-                        <label for="">毕业时间 :</label>
-                        <div class="inp-border">
-                            <input type="text" th:value="${schoolmsg.gradaution_time}" name="gradaution_time" disabled>
-                        </div>
-                    </li>
-                    <li>
-                        <label for="">困难生类别 :</label>
-                        <div class="inp-border">
-                            <input type="text" th:value="${schoolmsg.difficult_students_category}" name="difficult_students_category" disabled>
-                        </div>
-                    </li>
-                    <li>
-                        <label for="">生源所在地 :</label>
-                        <div class="inp-border">
-                            <input type="text" th:value="${schoolmsg.location_of_student}" name="location_of_student" disabled>
-                        </div>
-                    </li>
-                    <li>
-                        <label for="">学籍是否变动 :</label>
-                        <div class="inp-border">
-                            <input type="text" th:value="${schoolmsg.student_status}" name="student_status" disabled>
-                        </div>
-                    </li>
-                    <li>
-                        <label for="">留级退学标志 :</label>
-                        <div class="inp-border">
-                            <input type="text" th:value="${schoolmsg.drop_out_status}" name="drop_out_status" disabled>
-                        </div>
-                    </li>
-                    <li>
-                        <label for="">在校任职情况 :</label>
-                        <div class="inp-border">
-                            <input type="text" th:value="${schoolmsg.is_worker_school}" name="is_worker_school" disabled>
-                        </div>
-                    </li>
-                    <li>
-                        <label for="">综合评测情况 :</label>
-                        <div class="inp-border">
-                            <input type="text" th:value="${schoolmsg.overview}" name="overview" disabled>
-                        </div>
-                    </li>
+        <div class="basics-msg">
+            <p>基础信息</p>
+        </div>
+        <div class="basics-list">
+            <ul class="clearfix">
+                <li>
+                    <label for="">考生号码 :</label>
+                    <div class="inp-border">
+                        <input type="number" th:value="${schoolmsg.candidate_number}" name="candidate_number" disabled>
+                    </div>
+                </li>
+                <li>
+                    <label for="">原考生号 :</label>
+                    <div class="inp-border">
+                        <input type="number" th:value="${schoolmsg.old_candidate_number}" name="old_candidate_number" disabled>
+                    </div>
+                </li>
+                <li>
+                    <label for="">入校时间 :</label>
+                    <div class="inp-border">
+                        <input type="text" th:value="${schoolmsg.join_school_time}" name="join_school_time" disabled>
+                    </div>
+                </li>
+                <li>
+                    <label for="">毕业时间 :</label>
+                    <div class="inp-border">
+                        <input type="text" th:value="${schoolmsg.gradaution_time}" name="gradaution_time" disabled>
+                    </div>
+                </li>
+                <li>
+                    <label for="">困难生类别 :</label>
+                    <div class="inp-border">
+                        <input type="text" th:value="${schoolmsg.difficult_students_category}" name="difficult_students_category" disabled>
+                    </div>
+                </li>
+                <li>
+                    <label for="">生源所在地 :</label>
+                    <div class="inp-border">
+                        <input type="text" th:value="${schoolmsg.location_of_student}" name="location_of_student" disabled>
+                    </div>
+                </li>
+                <li>
+                    <label for="">学籍是否变动 :</label>
+                    <div class="inp-border">
+                        <input type="text" th:value="${schoolmsg.student_status}" name="student_status" disabled>
+                    </div>
+                </li>
+                <li>
+                    <label for="">是否留级退学 :</label>
+                    <div class="inp-border">
+                        <input type="text" th:value="${schoolmsg.drop_out_status}" name="drop_out_status" disabled>
+                    </div>
+                </li>
+                <li>
+                    <label for="">在校任职情况 :</label>
+                    <div class="inp-border">
+                        <input type="text" th:value="${schoolmsg.is_worker_school}" name="is_worker_school" disabled>
+                    </div>
+                </li>
+                <li>
+                    <label for="">综合评测情况 :</label>
+                    <div class="inp-border">
+                        <input type="text" th:value="${schoolmsg.overview}" name="overview" disabled>
+                    </div>
+                </li>
 
-                    <li>
-                        <label for="">档案是否转入学校 :</label>
-                        <div class="inp-border">
-                            <input type="text" th:value="${schoolmsg.file_is_transferred}" name="file_is_transferred" disabled>
-                        </div>
-                    </li>
-                    <li>
-                        <label for="">户口是否转入学校 :</label>
-                        <div class="inp-border">
-                            <input type="text" th:value="${schoolmsg.accunt_is_transferred}" name="accunt_is_transferred" disabled>
-                        </div>
-                    </li>
-                    <li style="width: 532px">
-                        <label for="">入学前档案所在单位 :</label>
-                        <div class="inp-border" style="width: 348px">
-                            <input type="text" th:value="${schoolmsg.before_school}" name="before_school" disabled>
-                        </div>
-                    </li>
-                </ul>
-            </div>
-            <div class="basics-msg">
-                <p>专业信息</p>
-            </div>
-            <div class="basics-list">
-                <ul class="clearfix">
-                    <li>
-                        <label for="">学历* :</label>
-                        <div class="inp-border">
-                            <input type="text" th:value="${schoolmsg.education}" name="education" disabled>
-                        </div>
-                    </li>
-                    <li>
-                        <label for="">学制* :</label>
-                        <div class="inp-border">
-                            <input type="text" th:value="${schoolmsg.academic_system}" name="academic_system" disabled>
-                        </div>
-                    </li>
-                    <li>
-                        <label for="">学科门类* :</label>
-                        <div class="inp-border">
-                            <input type="text" th:value="${schoolmsg.disciplines}" name="disciplines" disabled>
-                        </div>
-                    </li>
-                    <li>
-                        <label for="">专业名称* :</label>
-                        <div class="inp-border">
-                            <input type="text" th:value="${schoolmsg.professional_title}" name="professional_title" disabled>
-                        </div>
-                    </li>
-                    <li>
-                        <label for="">所在院系* :</label>
-                        <div class="inp-border">
-                            <input type="text" th:value="${schoolmsg.faculty}" name="faculty" disabled>
-                        </div>
-                    </li>
-                    <li>
-                        <label for="">所在班级* :</label>
-                        <div class="inp-border">
-                            <input type="text" th:value="${schoolmsg.classname}" name="classname" disabled>
-                        </div>
-                    </li>
-                    <!--<li>-->
-                    <!--<label for="">培养方式 :</label>-->
-                    <!--<div class="inp-border">-->
-                    <!--<input type="text" disabled>-->
-                    <!--</div>-->
-                    <!--</li>-->
-                    <!--<li>-->
-                    <!--<label for="">是否师范 :</label>-->
-                    <!--<div class="inp-border">-->
-                    <!--<input type="text" disabled>-->
-                    <!--</div>-->
-                    <!--</li>-->
-                    <!--<li>-->
-                    <!--<label for="">师范生类别 :</label>-->
-                    <!--<div class="inp-border">-->
-                    <!--<input type="text" disabled>-->
-                    <!--</div>-->
-                    <!--</li>-->
-                    <li>
-                        <label for="">主修外语语种 :</label>
-                        <div class="inp-border">
-                            <input type="text" th:value="${schoolmsg.main_foreign_language}" name="main_foreign_language" disabled>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="bottom fr">
-                            <input type="submit" value="提交" style="height: 35px;width: 60px;background-color: #177ec1;color: #e7f2f9 " disabled>
-                        </div>
-                    </li>
-                </ul>
-            </div>
+                <li>
+                    <label for="">档案是否转入学校 :</label>
+                    <div class="inp-border">
+                        <input type="text" th:value="${schoolmsg.file_is_transferred}" name="file_is_transferred" disabled>
+                    </div>
+                </li>
+                <li>
+                    <label for="">户口是否转入学校 :</label>
+                    <div class="inp-border">
+                        <input type="text" th:value="${schoolmsg.accunt_is_transferred}" name="accunt_is_transferred" disabled>
+                    </div>
+                </li>
+                <li style="width: 532px">
+                    <label for="">入学前档案所在单位 :</label>
+                    <div class="inp-border" style="width: 348px">
+                        <input type="text" th:value="${schoolmsg.before_school}" name="before_school" disabled>
+                    </div>
+                </li>
+            </ul>
+        </div>
+        <div class="basics-msg">
+            <p>专业信息</p>
+        </div>
+        <div class="basics-list">
+            <ul class="clearfix">
+                <li>
+                    <label for="">学历* :</label>
+                    <div class="inp-border">
+                        <input type="text" th:value="${schoolmsg.education}" name="education" disabled>
+                    </div>
+                </li>
+                <li>
+                    <label for="">学制* :</label>
+                    <div class="inp-border">
+                        <input type="text" th:value="${schoolmsg.academic_system}" name="academic_system" disabled>
+                    </div>
+                </li>
+                <li>
+                    <label for="">学科门类* :</label>
+                    <div class="inp-border">
+                        <input type="text" th:value="${schoolmsg.disciplines}" name="disciplines" disabled>
+                    </div>
+                </li>
+                <li>
+                    <label for="">专业名称* :</label>
+                    <div class="inp-border">
+                        <input type="text" th:value="${schoolmsg.professional_title}" name="professional_title" disabled>
+                    </div>
+                </li>
+                <li>
+                    <label for="">所在院系* :</label>
+                    <div class="inp-border">
+                        <input type="text" th:value="${schoolmsg.faculty}" name="faculty" disabled>
+                    </div>
+                </li>
+                <li>
+                    <label for="">所在班级* :</label>
+                    <div class="inp-border">
+                        <input type="text" th:value="${schoolmsg.classname}" name="classname" disabled>
+                    </div>
+                </li>
+                <!--<li>-->
+                <!--<label for="">培养方式 :</label>-->
+                <!--<div class="inp-border">-->
+                <!--<input type="text" disabled>-->
+                <!--</div>-->
+                <!--</li>-->
+                <!--<li>-->
+                <!--<label for="">是否师范 :</label>-->
+                <!--<div class="inp-border">-->
+                <!--<input type="text" disabled>-->
+                <!--</div>-->
+                <!--</li>-->
+                <!--<li>-->
+                <!--<label for="">师范生类别 :</label>-->
+                <!--<div class="inp-border">-->
+                <!--<input type="text" disabled>-->
+                <!--</div>-->
+                <!--</li>-->
+                <li>
+                    <label for="">主修外语语种 :</label>
+                    <div class="inp-border">
+                        <input type="text" th:value="${schoolmsg.main_foreign_language}" name="main_foreign_language" disabled>
+                    </div>
+                </li>
+                <li>
+                    <div class="bottom fr">
+                        <input type="submit" value="提交" style="height: 35px;width: 60px;background-color: #177ec1;color: #e7f2f9 " disabled>
+                    </div>
+                </li>
+            </ul>
         </div>
     </form>
 </div>
-    <script src="js/jquery-1.9.1.min.js" type="text/javascript" charset="utf-8"></script>
-    <script th:iline="javascript">
-        if([[${msg}]] != null){alert([[${msg}]])}
-        $('.l').on('click',function(){
-            $('input').removeAttr('disabled');
-        });
-        // $('#keep').on('click',function(){
-        // 	$('input').attr('disabled','disabled');
-        // });
-    </script>
+<script src="js/jquery-1.9.1.min.js"></script>
+<script th:inline="javascript">
+    if([[${msg}]] !=null){alert([[${msg}]])}
+    $('.l').click(function () {
+        $('input').removeAttr('disabled');
+    });
+    // $('.l').click(function () {
+    //     $('.oInp').removeAttr('disabled');
+    // 	$.ajax({
+    // 		url: "http://101.201.154.205:9090/survey/list",
+    // 		data: {
+    // 		  t: Math.random()
+    // 		},
+    // 		type: 'get',
+    // 		dataType: 'jsonp',
+    // 		'jsonp': 'callback'
+    // 	}).then(function (res) {
+    //          console.log(res);
+    //     },function (err) {
+    //         console.log(err);
+    //     });
+    // });
+    // $('.r').click(function () {
+    //     $('.oInp').attr('disabled','disabled');
+    //
+    // });
+
+</script>
 </body>
 </html>

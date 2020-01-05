@@ -20,12 +20,12 @@
 				<div class="login-form">
 					<h2>用户登录</h2>
 					<div class="login_form_box">
-						<form class="form-horizontal" role="form" action="" method="post" onsubmit="getUrl();">
+						<form action="" class="form-horizontal"  method="post">
 							<div class="identifire">
 							<span>身　份：</span>
-							<select>
-							<option value="学生" selected="selected">学生</option>
-							<option value="教师教辅人员">教师教辅人员</option>
+							<select id="select" onchange="checkField(this.value)">
+							<option value="学生" >学生</option>
+							<option value="教师" >教师教辅人员</option>
 							</select>
 							</div>
 							<div class="account clearfix">
@@ -54,21 +54,19 @@
 			</div>
 		</div>
 	</div>
-	<div align="center">
 	<script type="text/javascript" th:inline="javascript">
 
 				if([[${msg}]]!=null){alert([[${msg}]]);}
                 var aVal = $('.identifire select');
                 if (aVal.val() == '学生') {
-                    function getUrl() {
-                        $("form").attr("action", "index");
-                    }
-                } else if (aVal.val() == '教师教辅人员') {
-                    function getUrl() {
-                        $("form").attr("action", "teacherIndex");
-                    }
+					$("form").attr("action", "index");
+
                 }
+                function checkField(val)
+                {
+					$("form").attr("action", "teacher");
+                }
+
 	</script>
-	</div>
 </body>
 </html>

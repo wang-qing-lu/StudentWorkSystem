@@ -1,31 +1,34 @@
 <!DOCTYPE html>
 <html lang="en">
 
-	<head>
-		<meta charset="UTF-8">
-		<title>Title</title>
-		<link rel="stylesheet" href="css/common.css">
-		<link rel="stylesheet" href="css/search.css">
-	</head>
+<head>
+	<meta charset="UTF-8">
+	<title>Title</title>
+	<link rel="stylesheet" href="css/common.css">
+	<link rel="stylesheet" href="css/search.css">
+</head>
 
-	<body>
-		<div class="container">
-			<div class="search-content content clearfix">
-				<div class="search-bar  clearfix ">
-					<div class="bar-content clearfix fl">
-						<input type="text" value="" class="fr" />
-					</div>
-					<a href="javascript:;" class="search-font fr">搜索</a>
-					<div class="word fl">建议搜索词汇</div>
-					<div class="list fl ">
-						<ul class="clearfix">
-							<li>学号</li>
-							<li>姓名</li>
-						</ul>
-					</div>
+<body>
+<div class="container">
+	<div class="search-content content clearfix">
+		<form id="searchStudentEmInfo" action="showStudent" role="form" >
+			<div class="search-bar  clearfix ">
+				<div class="bar-content clearfix fl">
+					<input name="student_name" type="text" value="" class="fr" />
+				</div>
+				<button type="submit" class="search-font fr">搜索</button>
+				<div class="word fl">建议搜索词汇</div>
+				<div class="list fl ">
+					<ul class="clearfix">
+						<li>学生姓名</li>
+					</ul>
 				</div>
 			</div>
-		</div>
-	</body>
-
+		</form>
+	</div>
+</div>
+</body>
 </html>
+
+
+

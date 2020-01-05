@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="css/common.css">
+    <link rel="stylesheet" href="css/TeacherPersonalInfo.css">
+    <link rel="stylesheet" href="css/student.css">
+</head>
+<body>
+<div class="container flgure">
+    <div class="content">
+        <ul class="clearfix info">
+            <li class="active">基础信息</li>
+            <li>联系方式</li>
+        </ul>
+        <div class="basic">
+            <form  role="form"  id="teacherInfo" method="post" action="/emitTeacherInfo" >
+                <div class="select active">
+                    <div class="bottom fr">
+                        <span href="javascript:;"  class="l">更新</span>
+                    </div>
+                    <div class="left fl">
+                        <div>
+                            <label for="">姓名：</label>
+                            <input name="teacher_name" type="text" th:value="${teacherInfo.teacher_name}" disabled>
+                        </div>
+                        <div>
+                            <label for="">性别：</label>
+                            <input name="teacher_sex" type="text" th:value="${teacherInfo.teacher_sex}" disabled>
+                        </div>
+                        <div>
+                            <label for="">出生日期：</label>
+                            <input name="teacher_birthday" type="text" th:value="${teacherInfo.teacher_birthday}" disabled>
+                        </div>
+                        <div>
+                            <label for="">身份证号：</label>
+                            <input name="teacher_id_number" type="text" th:value="${teacherInfo.teacher_id_number}" class="id" disabled>
+                        </div>
+                        <div>
+                            <label>家庭地址:</label>
+                            <input name="teacher_address" type="text" th:value="${teacherInfo.teacher_address}" disabled>
+                        </div>
+                        <div>
+                            <label for="">所教科目：</label>
+                            <input name="teacher_course" type="text" th:value="${teacherInfo.teacher_course}" disabled>
+                        </div>
+                    </div>
+                    <div class="right fr">
+                        <div>
+                            <label for="">工号：</label>
+                            <input name="teacher_username" type="number" th:value="${teacherInfo.teacher_username}" disabled>
+                        </div>
+                        <div>
+                            <label for="">民族：</label>
+                            <input name="teacher_nation" type="text" th:value="${teacherInfo.teacher_nation}" disabled>
+                        </div>
+                        <div class="label">
+                            <label for="">政治面貌：</label>
+                            <input name="teacher_political_status" type="text" th:value="${teacherInfo.teacher_political_status}" disabled>
+                        </div>
+                        <div  class="label">
+                            <label for="">教师等级：</label>
+                            <input name="teacher_grade" type="text" th:value="${teacherInfo.teacher_grade}" disabled>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="select ">
+                    <div class="bottom fr">
+                        <span href="javascript:;"  class="l">更新</span>
+                    </div>
+                    <div class="left fl">
+                        <div>
+                            <label for="">手机号码：</label>
+                            <input name="teacher_phone_number" type="number" th:value="${teacherInfo.teacher_phone_number}" disabled>
+                        </div>
+                        <div>
+                            <label for="">QQ号码：</label>
+                            <input name="teacher_qq" type="number" th:value="${teacherInfo.teacher_qq}" disabled>
+                        </div>
+                        <div>
+                            <label for="">电子邮箱：</label>
+                            <input name="teacher_email" type="email" th:value="${teacherInfo.teacher_email}" disabled>
+                        </div>
+                    </div>
+                </div>
+                <div class="bottom fr">
+                    <input type="submit" value="提交" style="height: 35px;width: 60px;background-color: #177ec1;color: #e7f2f9 " disabled>
+                </div>
+            </form>
+        </div>
+
+    </div>
+</div>
+</div>
+<script src="js/jquery-1.9.1.min.js"></script>
+<script th:inline="javascript">
+    if([[${msg}]]!=null){alert([[${msg}]])}
+    $('.l').on('click',function(){
+        $('input').removeAttr('disabled');
+    });
+    $('.info li').click(function() {
+        $(this).addClass("active").siblings().removeClass("active");
+        $('.basic .select').eq($("ul li").index(this)).addClass("active").siblings().removeClass("active")
+    })
+
+</script>
+</body>
+</html>

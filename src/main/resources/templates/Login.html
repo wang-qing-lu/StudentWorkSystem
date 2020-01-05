@@ -23,7 +23,7 @@
 					<form class="form-horizontal" role="form" action="" method="post" onsubmit="getUrl();">
 						<div class="identifire">
 							<span>身　份：</span>
-							<select>
+							<select onchange="checkField(this.value)">
 								<option value="学生" selected="selected">学生</option>
 								<option value="教师教辅人员">教师教辅人员</option>
 							</select>
@@ -60,13 +60,12 @@
         if([[${msg}]]!=null){alert([[${msg}]]);}
         var aVal = $('.identifire select');
         if (aVal.val() == '学生') {
-            function getUrl() {
-                $("form").attr("action", "index");
-            }
-        } else if (aVal.val() == '教师教辅人员') {
-            function getUrl() {
-                $("form").attr("action", "teacherIndex");
-            }
+            $("form").attr("action", "index");
+
+        }
+        function checkField(val)
+        {
+            $("form").attr("action", "teacher");
         }
 	</script>
 </div>
