@@ -147,7 +147,7 @@ public class TeacherController {
                 return "successful";
             }
             catch (Exception error){
-                System.out.println(error);
+                error.printStackTrace();
                 model.addAttribute("msg","提交失败,请联系管理员!");
                 return "fail";
             }

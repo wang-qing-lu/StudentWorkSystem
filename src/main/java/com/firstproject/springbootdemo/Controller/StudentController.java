@@ -125,7 +125,7 @@ public class StudentController {
                 return "successful";
             }
             catch (Exception error){
-                System.out.println(error);
+                error.printStackTrace();
                 model.addAttribute("msg","更新失败，请联系管理员！");
                 return "fail";
             }
@@ -195,7 +195,7 @@ public class StudentController {
                 return "successful";
             }
             catch (Exception error){
-                System.out.println(error);
+                error.printStackTrace();
                 model.addAttribute("msg","提交失败,请联系管理员!");
                 return "fail";
             }
@@ -249,7 +249,7 @@ public class StudentController {
                 return "successful";
             }
             catch (Exception error){
-                System.out.println(error);
+                error.printStackTrace();
                 model.addAttribute("msg","更新失败，请联系管理员！");
                 return "fail";
             }
@@ -300,7 +300,7 @@ public class StudentController {
                 return "successful";
             }
             catch (Exception error){
-                System.out.println(error);
+                error.printStackTrace();
                 model.addAttribute("msg","提交失败，请联系管理员！");
                 return "fail";
             }
@@ -359,7 +359,7 @@ public class StudentController {
                 return "successful";
             }
             catch (Exception error){
-                System.out.println(error);
+                error.printStackTrace();
                 model.addAttribute("msg","更新失败，请联系管理员！");
                 return "fail";
             }
@@ -379,7 +379,7 @@ public class StudentController {
                 return "successful";
             }
             catch (Exception error){
-                System.out.println(error);
+                error.printStackTrace();
                 model.addAttribute("msg","提交失败，请联系管理员！");
                 return "fail";
             }
@@ -441,7 +441,7 @@ public class StudentController {
                 return "successful";
             }
             catch (Exception error){
-                System.out.println(error);
+                error.printStackTrace();
                 model.addAttribute("msg","更新失败，请联系管理员！");
                 return "fail";
             }
@@ -456,7 +456,7 @@ public class StudentController {
                 return "successful";
             }
             catch (Exception error){
-                System.out.println(error);
+                error.printStackTrace();
                 model.addAttribute("msg","提交失败，请联系管理员！");
                 return "fail";
             }
@@ -501,7 +501,7 @@ public class StudentController {
                 return "successful";
             }
             catch (Exception error){
-                System.out.println(error);
+                error.printStackTrace();
                 model.addAttribute("msg","更新失败，请联系管理员！");
                 return "fail";
             }
@@ -516,7 +516,7 @@ public class StudentController {
                 return "successful";
             }
             catch (Exception error){
-                System.out.println(error);
+                error.printStackTrace();
                 model.addAttribute("msg","提交失败，请联系管理员！");
                 return "fail";
             }
@@ -554,7 +554,7 @@ public class StudentController {
             return "successful";
         }
         catch (Exception error){
-            System.out.println(error);
+            error.printStackTrace();
             model.addAttribute("msg","提交失败，请联系管理员！");
             return "fail";
         }
@@ -596,7 +596,7 @@ public class StudentController {
                 return "successful";
             }
             catch (Exception error){
-                System.out.println(error);
+                error.printStackTrace();
                 model.addAttribute("msg","更新失败，请联系管理员！");
                 return "fail";
             }
@@ -611,13 +611,11 @@ public class StudentController {
                 return "successful";
             }
             catch (Exception error){
-                System.out.println(error);
+                error.printStackTrace();
                 model.addAttribute("msg","提交失败，请联系管理员！");
                 return "fail";
             }
-
         }
-
     }
     /**
      * 显示修改密码界面
