@@ -12,6 +12,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
 
@@ -43,13 +44,14 @@ public class TeacherController {
      * @return
      */
     @RequestMapping(value = "teacher", method = RequestMethod.POST)
-    public String teacherIndex(String username, String password, Model model) {
+    public String teacherIndex(String username, String password, Model model, HttpServletRequest request) {
         Teacher teacher = teacherService.selectTeacherInfoByUsername(username);
         if (teacher != null) {
             System.out.println(teacher.toString());
             if (teacher.getPassword().equals(password)) {
                 teacher_username = teacher.getUsername();
                 teacher_name = teacher.getTeacher_name();
+                request.getSession().setAttribute("loginInfo", "success");
                 return "redirect:TeacherIndex";
             } else {
                 model.addAttribute("msg", "用户名或密码错误！");

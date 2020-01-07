@@ -20,7 +20,7 @@
 			<div class="login-form">
 				<h2>用户登录</h2>
 				<div class="login_form_box">
-					<form class="form-horizontal" role="form" action="" method="post" onsubmit="getUrl();">
+					<form class="form-horizontal"  action="" method="post">
 						<div class="identifire">
 							<span>身　份：</span>
 							<select onchange="checkField(this.value)">
@@ -61,7 +61,6 @@
         var aVal = $('.identifire select');
         if (aVal.val() == '学生') {
             $("form").attr("action", "index");
-
         }
         function checkField(val)
         {

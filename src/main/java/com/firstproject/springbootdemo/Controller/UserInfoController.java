@@ -16,6 +16,9 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
 @Controller
 @MapperScan("com.firstproject.springbootdemo.dao")
 @ComponentScan("com.firstproject.springbootdemo.service")
@@ -84,6 +87,23 @@ public class UserInfoController {
             }
             model.addAttribute("msg", "用户名或身份证号不符");
             return "password";
+        }
+    }
+
+    @RequestMapping("logout")
+    public String logout(HttpServletRequest request,Model model){
+        System.out.println("开始进行登出处理!");
+        HttpSession session = request.getSession();
+        session.removeAttribute("loginInfo");
+        String info = (String) session.getAttribute("loginInfo");
+        if(info == null){
+            session.invalidate();
+            model.addAttribute("msg","退出成功！");
+            return "forward:login";
+        }
+        else{
+            model.addAttribute("msg","退出失败，请联系管理员进行处理！");
+            return "fail";
         }
     }
 }

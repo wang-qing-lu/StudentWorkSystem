@@ -14,6 +14,8 @@ import java.util.HashMap;
 import java.util.Map;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 
 @Controller
@@ -64,12 +66,13 @@ public class StudentController {
      * @throws InterruptedException
      */
     @RequestMapping(value ="index", method = RequestMethod.POST)
-    public String index(String username,String password, Model model) throws InterruptedException {
+    public String index(String username, String password, Model model, HttpServletRequest request) throws InterruptedException {
        Student student =studentservice.getUserByUsername(username);
        if (student != null){
            System.out.println(student.toString());
            if(student.getPassword().equals(password)){
                studentname = student.getName();
+               request.getSession().setAttribute("loginInfo", "success");
                return "redirect:StudentIndex";
        }
            else{
