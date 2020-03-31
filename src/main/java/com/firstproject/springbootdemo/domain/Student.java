@@ -1,5 +1,8 @@
 package com.firstproject.springbootdemo.domain;
 
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
+
 public class Student {
 
     private String username;
